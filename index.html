@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>Rock Paper Scissors</h1>
+        <article class="rounds">
+          <h2>How many rounds?</h2>
+          <form>
+            <div class="pick-rounds">
+              <div>
+                <input type="radio" name="rounds" id="5" value="5" checked />
+                <label for="5">5</label>
+              </div>
+              <div>
+                <input type="radio" name="rounds" id="10" value="10" />
+                <label for="10">10</label>
+              </div>
+              <div>
+                <input type="radio" name="rounds" id="15" value="15" />
+                <label for="15">15</label>
+              </div>
+              <div>
+                <input type="radio" name="rounds" id="20" value="20" />
+                <label for="20">20</label>
+              </div>
+            </div>
+            <button onreset="restart()" class="restart">restart</button>
+          </form>
+        </article>
+        <article class="win-lose">
+          <h3>USER</h3>
+          <p class="user-stat">0</p>
+          <p>:</p>
+          <p class="comp-stat">0</p>
+          <h3>Comp</h3>
+        </article>
+        <h2 class="text-output">Let's play!</h2>
+        <article class="action">
+          <button onclick="action(0)" class="rock">Rock</button>
+          <button onclick="action(1)" class="paper">Paper</button>
+          <button onclick="action(2)" class="scissors">Scissors</button>
+        </article>
+        <h3>MAKE YOUR MOVE!</h3>
+      </section>
+    </main>
+    <script type="text/javascript" src="./assets/js/main.js"></script>
+  </body>
+</html>
