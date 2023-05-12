@@ -11,10 +11,11 @@
     <main>
       <section>
         <h1>Rock Paper Scissors</h1>
+
         <article class="rounds">
-          <h2>How many rounds?</h2>
           <form>
-            <div class="pick-rounds">
+            <h2 class="headline-rounds">How many rounds?</h2>
+            <div class="picked-rounds">
               <div>
                 <input type="radio" name="rounds" id="5" value="5" checked />
                 <label for="5">5</label>
@@ -24,32 +25,71 @@
                 <label for="10">10</label>
               </div>
               <div>
-                <input type="radio" name="rounds" id="15" value="15" />
-                <label for="15">15</label>
+                <input type="radio" name="rounds" id="25" value="25" />
+                <label for="25">25</label>
               </div>
               <div>
-                <input type="radio" name="rounds" id="20" value="20" />
-                <label for="20">20</label>
+                <input type="radio" name="rounds" id="50" value="50" />
+                <label for="50">50</label>
+              </div>
+              <div>
+                <input type="radio" name="rounds" id="100" value="100" />
+                <label for="100">100</label>
+              </div>
+              <div>
+                <input type="radio" name="rounds" id="endless" value="0" />
+                <label for="endless">∞</label>
               </div>
             </div>
             <button onreset="restart()" class="restart">restart</button>
           </form>
+
+          <article class="stats">
+            <h2>Stats:</h2>
+            <div>
+              <h3>You</h3>
+              <h3>vs.</h3>
+              <h3>Comp</h3>
+              <p class="output-you"></p>
+              <p class="current-stat"></p>
+              <p class="output-comp"></p>
+            </div>
+            <div class="output-stats"></div>
+          </article>
         </article>
+
         <article class="win-lose">
-          <h3>USER</h3>
+          <h2>YOU</h2>
           <p class="user-stat">0</p>
-          <p>:</p>
+          <p class="vs">:</p>
           <p class="comp-stat">0</p>
-          <h3>Comp</h3>
+          <h2>Comp</h2>
         </article>
-        <h2 class="text-output">Let's play!</h2>
+
+        <h2 class="endresult"></h2>
+
         <article class="action">
-          <button onclick="action(0)" class="rock">Rock</button>
-          <button onclick="action(1)" class="paper">Paper</button>
-          <button onclick="action(2)" class="scissors">Scissors</button>
+          <button onclick="action(0)" class="buttons">
+            <img src="./assets/img/game-Rock.png" alt="Rock" class="Rock" />
+          </button>
+          <button onclick="action(1)" class="buttons">
+            <img src="./assets/img/game-Paper.png" alt="Paper" class="Paper" />
+          </button>
+          <button onclick="action(2)" class="buttons">
+            <img
+              src="./assets/img/game-Scissors.png"
+              alt="Scissors"
+              class="Scissors"
+            />
+          </button>
         </article>
-        <h3>MAKE YOUR MOVE!</h3>
+
+        <h3>CHOSE YOUR WEAPON!</h3>
       </section>
+
+      <div class="animation-you"></div>
+      <div class="animation-comp"></div>
+      <div class="clash"></div>
     </main>
     <script type="text/javascript" src="./assets/js/main.js"></script>
   </body>
