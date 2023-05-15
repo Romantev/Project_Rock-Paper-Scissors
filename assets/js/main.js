@@ -17,33 +17,37 @@ let roundsCount = 0;
 let userScore = 0;
 let compScore = 0;
 let selectedVal = 5;
-let situation = [
-  ["DRAW", "WIN", "LOSE"],
-  ["LOSE", "DRAW", "WIN"],
-  ["WIN", "LOSE", "DRAW"],
-];
 
-//! FUNCTION RADIO VALUE
+//! RADIO VALUE
 radioButtons.forEach((button) => {
   button.addEventListener("change", () => {
     selectedVal = Number(button.value);
   });
 });
 
+let situation = [
+  ["DRAW", "WIN", "LOSE"],
+  ["WIN", "DRAW", "LOSE"],
+  ["WIN", "LOSE", "DRAW"],
+];
+
 //! FUNCTION GAME
 action = (userAction) => {
   //* GENERATED VAL
   const compRandomVal = Math.floor(Math.random() * 3);
-  const userVal = situation[userAction][compRandomVal];
+  const resultVal = situation[userAction][compRandomVal];
   const maxRound = selectedVal;
   const weapons = ["Rock", "Paper", "Scissors"];
   const userWeapon = weapons[userAction];
   const compWeapon = weapons[compRandomVal];
 
   //* ROUND: DRAW
-  if (userVal == "DRAW") {
+  if (resultVal == "DRAW") {
+    userScore++;
+    compScore++;
+
     //* ROUND: LOSE!
-  } else if (userVal == "LOSE") {
+  } else if (resultVal == "LOSE") {
     compScore++;
 
     //* ROUND: WIN!

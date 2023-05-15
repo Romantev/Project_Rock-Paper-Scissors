@@ -17,7 +17,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2vw;
+  gap: 4vw;
   position: relative;
   padding: 1vw;
 }
@@ -267,7 +267,7 @@ h3:nth-last-of-type(1) {
 
 .animation-you img {
   margin-top: 30%;
-  width: 40%;
+  width: 60%;
   padding: 30px;
   background: red;
   border-radius: 100%;
@@ -275,7 +275,7 @@ h3:nth-last-of-type(1) {
 
 .animation-comp img {
   margin-top: 30%;
-  width: 40%;
+  width: 60%;
   padding: 30px;
   background: blue;
   border-radius: 100%;
