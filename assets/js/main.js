@@ -8,7 +8,6 @@ const buttons = document.querySelectorAll(".buttons");
 const resultYou = document.querySelector(".output-you");
 const resultComp = document.querySelector(".output-comp");
 const currentResult = document.querySelector(".current-stat");
-const endResult = document.querySelector(".endresult");
 const animationYou = document.querySelector(".animation-you");
 const animationComp = document.querySelector(".animation-comp");
 const animationClash = document.querySelector(".clash");
@@ -43,60 +42,51 @@ action = (userAction) => {
 
   //* ROUND: DRAW
   if (userVal == "DRAW") {
-    outputRounds.innerHTML = `<p>DRAW! Both of you got ${userWeapon}</p>`;
-
     //* ROUND: LOSE!
   } else if (userVal == "LOSE") {
     compScore++;
 
-    outputComp.innerHTML = compScore;
-    outputRounds.innerHTML = `<p>YOU LOSE! You got beaten by ${compWeapon}</p>`;
-
     //* ROUND: WIN!
   } else {
     userScore++;
-
-    outputUser.innerHTML = userScore;
-    outputRounds.innerHTML = `<p>YOU WIN! You won against ${compWeapon}</p>`;
   }
 
   //* ADDING RESULT
   roundsCount++;
+  outputUser.innerHTML = userScore;
+  outputComp.innerHTML = compScore;
   headlineRounds.innerHTML = "Round";
-  outputRounds.innerHTML += `<p>${roundsCount} / ${maxRound}</p>`;
+  outputRounds.innerHTML = `<p>${roundsCount} / ${maxRound}</p>`;
   outputRounds.style.display = "block";
-  resultYou.innerHTML += `<img src="./assets/img/game-${userWeapon}.png" alt="${userWeapon}" class="${userWeapon}" />`;
+  resultYou.innerHTML += `<img src="./assets/img/game-${userWeapon}.png" alt="${userWeapon}" class="${userWeapon}-mini" />`;
   resultComp.innerHTML += `<img src="./assets/img/game-${compWeapon}.png" 
-  alt="${compWeapon}" class="${compWeapon}" />`;
+  alt="${compWeapon}" class="${compWeapon}-mini" />`;
   currentResult.innerHTML += `<p>${userScore} : ${compScore}</p>`;
 
   //* ANIMATION
-  animationClash.innerHTML = `<h2> ${situation[userAction][compRandomVal]}</h2>`;
+  if (situation[userAction][compRandomVal] == "DRAW") {
+    animationClash.innerHTML = `<h2 style="color:blue"> ${situation[userAction][compRandomVal]}</h2>`;
+  } else if (situation[userAction][compRandomVal] == "LOSE") {
+    animationClash.innerHTML = `<h2 style="color:red"> ${situation[userAction][compRandomVal]}</h2>`;
+  } else {
+    animationClash.innerHTML = `<h2 style="color:green"> ${situation[userAction][compRandomVal]}</h2>`;
+  }
   animationYou.innerHTML = `<img src="./assets/img/game-${userWeapon}.png" alt="${userWeapon}" />`;
   animationComp.innerHTML = `<img src="./assets/img/game-${compWeapon}.png"
   alt="${compWeapon}" />`;
   animationYou.classList.add("animation-you-after");
-  setTimeout(() => {
-    animationYou.classList.remove("animation-you-after");
-  }, 1500);
   animationComp.classList.add("animation-comp-after");
-  setTimeout(() => {
-    animationComp.classList.remove("animation-comp-after");
-  }, 1500);
   animationClash.classList.add("clash-after");
   setTimeout(() => {
+    animationYou.classList.remove("animation-you-after");
+    animationComp.classList.remove("animation-comp-after");
+  }, 2000);
+  setTimeout(() => {
     animationClash.classList.remove("clash-after");
-  }, 1000);
+  }, 1500);
 
   //* GAME FINISHED
   if (roundsCount === maxRound) {
     buttons.forEach((button) => (button.disabled = true));
-    if (userScore == compScore) {
-      endResult.innerHTML = "So close, it's a DRAW! Try again!";
-    } else if (userScore < compScore) {
-      endResult.innerHTML = "Too bad, YOU LOSE! It's not your day!";
-    } else {
-      endResult.innerHTML = "You're the CHOSEN ONE! The World is yours!";
-    }
   }
 };
